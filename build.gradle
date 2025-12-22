@@ -4,7 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
-group = 'com.example'
+group = 'com.mysite'
 version = '0.0.1-SNAPSHOT'
 description = 'sbb'
 
@@ -19,8 +19,31 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    // implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // jpa 추가
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    //thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+    // lombok 의존성 추가
+    implementation 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
+    implementation 'org.projectlombok:lombok'
+    // 어노테이션 프로세서 설정 (필요한 경우)
+    annotationProcessor 'org.projectlombok:lombok'
+    // test 환경용
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    // h2 추가
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-h2console'
+    // junit 추가
+    testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
