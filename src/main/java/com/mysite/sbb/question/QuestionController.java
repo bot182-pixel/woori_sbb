@@ -20,11 +20,18 @@ public class QuestionController {
     private final QuestionService questionService;  // questionService 객체로 수정
     private final ContentNegotiationManager contentNegotiationManager;
 
-    @GetMapping("/question/list")
-    @ResponseBody
-    public String list(Model model) {
-        List<Question> questionList = this.questionService.getList();   //this.questionService 가 대신 역할을 하도록 수정
-        model.addAttribute("questionList", questionList);
+    //    @GetMapping("/question/list")
+//    @ResponseBody
+//    public String list(Model model) {
+//        List<Question> questionList = this.questionService.getList();   //this.questionService 가 대신 역할을 하도록 수정
+//        model.addAttribute("questionList", questionList);
+//        return "question_list";
+//    }
+
+    @GetMapping
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "0")int page) {
+        Page<Question> paging = this.questionService.getList(page);   //this.questionService 가 대신 역할을 하도록 수정
+        model.addAttribute("paging", paging);
         return "question_list";
     }
 
@@ -37,10 +44,10 @@ public class QuestionController {
         return "question_detail";
     }
 
-    @GetMapping("/create")
-    public String questionCreate() {
-        return "question_form";
-    }
+//    @GetMapping("/create")
+//    public String questionCreate() {
+//        return "question_form";
+//    }
 
     @GetMapping
     public String questionCreate(@RequestParam(value = "subject") String subject,
