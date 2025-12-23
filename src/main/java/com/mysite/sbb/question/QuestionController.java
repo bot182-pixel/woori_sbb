@@ -54,7 +54,6 @@ public class QuestionController {
         if (bindingResult.hasErrors()) {
             return "question_form";
         }
-        // TODO: 질문을 저장한다 --> 로직 처리 순서상 해야할일
 
         this.questionService.Create(questionForm.getSubject(), questionForm.getContent());
 
